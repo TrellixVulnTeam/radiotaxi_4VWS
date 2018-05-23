@@ -79,10 +79,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
     'mysql':{
-        'NAME': 'user_data',
+        'NAME': 'radiotaxi',
         'ENGINE': 'django.db.backends.mysql',
-        'USER': 'mysql_user',
-        'PASSWORD': 'password',
+        'USER': 'root',
+        'PASSWORD': 'Atlas.,2038',
         'OPTIONS': {
           'autocommit': True,
         },
