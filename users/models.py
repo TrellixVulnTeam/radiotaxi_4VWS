@@ -38,7 +38,6 @@ class User(models.Model):
 #        def __str__(self):
 #            return title
 
-
 #class Billing(models.Model):
 
 #class Branches(models.Model):
