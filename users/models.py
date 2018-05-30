@@ -44,7 +44,10 @@ class User(models.Model):
 
 #class AddressLists(models.Model)
 
+
+
 class Customers(models.Model):
+    
     name=models.CharField(max_length=150)
     vat_code=models.CharField(max_length=20)
     code=models.IntegerField(null=False)
