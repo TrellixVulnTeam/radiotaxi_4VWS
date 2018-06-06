@@ -47,7 +47,7 @@ class User(models.Model):
 
 
 class Customers(models.Model):
-    
+
     name=models.CharField(max_length=150)
     vat_code=models.CharField(max_length=20)
     code=models.IntegerField(null=False)
@@ -59,7 +59,8 @@ class Customers(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     created_by =models.CharField(max_length=20)
-    country= models.CharField(max_length=20)
+    country= models.CharField(max_length=25)
+
 
 
     #Campos nuevos fuera del modelo
