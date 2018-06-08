@@ -49,7 +49,7 @@ class Employee(models.Model):
         return title
 
 
-class Driver(models.Models):
+class Driver(models.Model):
 
     first_name=models.CharField(max_length=100)
     last_name=models.CharField(max_length=100)
@@ -65,6 +65,30 @@ class Driver(models.Models):
         return title
 
 #class Billing(models.Model):
+
+class Customers(models.Model):
+
+    name = models.CharField(max_length=150)
+    vat_code = models.CharField(max_length=20)
+    code = models.IntegerField(null=False)
+    address01 = models.CharField(max_length=100)
+    address02 = models.CharField(max_length=100)
+    address03 = models.CharField(max_length=100)
+    state = models.CharField(max_length=50)
+    city = models.CharField(max_length=50)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+    created_by =models.CharField(max_length=20)
+    country = models.CharField(max_length=25)
+
+
+
+    #Campos nuevos fuera del modelo
+    is_mandatory_pass_reg=models.BooleanField(default='False')
+
+    def __str__(self):
+        return self.title
+
 
 class Aggrement(models.Model):
 
@@ -92,9 +116,9 @@ class Contacts(models.Model):
         return self.title
 
 
-class AddressLists(models.Model)
+class AddressLists(models.Model):
 
-    is_favorite = CharField(max_length)
+    is_favorite = models.CharField(max_length=1)
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
@@ -107,7 +131,7 @@ class AddressLists(models.Model)
 
 class Passenger(models.Model):
     username=models.CharField(max_length=25)
-    first_name=model.CharField(max_length=100)
+    first_name=models.CharField(max_length=100)
     last_name=models.CharField(max_length=50)
     gender=models.IntegerField()
     date_birth=models.DateField()
@@ -136,28 +160,6 @@ class Special_Fields(models.Model):
     def __str__(self):
         return self.title
 
-class Customers(models.Model):
-
-    name = models.CharField(max_length=150)
-    vat_code = models.CharField(max_length=20)
-    code = models.IntegerField(null=False)
-    address01 = models.CharField(max_length=100)
-    address02 = models.CharField(max_length=100)
-    address03 = models.CharField(max_length=100)
-    state = models.CharField(max_length=50)
-    city = models.CharField(max_length=50)
-    created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
-    created_by =models.CharField(max_length=20)
-    country = models.CharField(max_length=25)
-
-
-
-    #Campos nuevos fuera del modelo
-    is_mandatory_pass_reg=models.BooleanField(default='False')
-
-    def __str__(self):
-        return self.title
 
 
 
