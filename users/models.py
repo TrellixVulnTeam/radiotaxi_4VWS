@@ -40,7 +40,7 @@ class Passenger(models.Model):
 
 
     def __str__(self):
-        return self.title
+        return self.first_name
 
 
 class Vehicle(models.Model):
@@ -58,7 +58,7 @@ class Vehicle(models.Model):
 
 
     def __str__(self):
-        return self.title
+        return self.created_at
 
 
 class TripTracking(models.Model):
@@ -69,7 +69,7 @@ class TripTracking(models.Model):
     created_by =models.CharField(max_length=20)
 
     def __str__(self):
-            return self.title
+            return self.created_at
 
 class Driver(models.Model):
 
@@ -111,7 +111,7 @@ class Customers(models.Model):
     is_mandatory_pass_reg=models.BooleanField(default='False')
 
     def __str__(self):
-        return self.title
+        return self.name
 
 
 
@@ -119,7 +119,7 @@ class Aggrement(models.Model):
 
     customer=models.ForeignKey(Customers,on_delete=models.CASCADE)
     def __str__(self):
-        return self.title
+        return self.customer.name
 #este es el objeto que configura el Movil que se encuentra configurado con Vehiculo y Conductor
 class Transport(models.Model):
 
@@ -137,7 +137,7 @@ class Transport(models.Model):
 
 
     def __str__(self):
-        return title
+        return self.start_service_dt
 
 
 class Trip(models.Model):
@@ -153,7 +153,7 @@ class Trip(models.Model):
     area = models.CharField(max_length=30)
 
     pickup_address = models.CharField(max_length=150)
-    destionation_address = models.CharField(max_length=150)
+    destination_address = models.CharField(max_length=150)
 
     phone=models.CharField(max_length=20)
     mobile_phone=models.CharField(max_length=20)
@@ -168,6 +168,7 @@ class Trip(models.Model):
     amount = models.IntegerField
 
     reported_pass = models.BooleanField()
+
     current_status=models.CharField(max_length=20)
     cost_center=models.CharField(max_length=10)
 
@@ -217,7 +218,7 @@ class Trip(models.Model):
 
 
     def __str__(self):
-        return title
+        return self.area
 
 
 class ExtraServices(models.Model):
@@ -230,7 +231,7 @@ class ExtraServices(models.Model):
 
 
     def __str__(self):
-        return title
+        return self.title
 
 
 class Employee(models.Model):
