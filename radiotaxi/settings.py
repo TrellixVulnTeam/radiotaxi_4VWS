@@ -79,19 +79,22 @@ WSGI_APPLICATION = 'radiotaxi.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
+<<<<<<< HEAD
     'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
+=======
+>>>>>>> 246e21c44835828d21fddb48811c9fec91596240
     'default':{
         'NAME': 'radiotaxi',
         'ENGINE': 'django.db.backends.mysql',
-        'USER': 'root',
-        'PASSWORD': 'Atlas.,2038',
+        'USER': 'devmaster',
+        'PASSWORD': 'itwillruletheworld',
+        'HOST': 'dev.oceanictp.cl',
         'OPTIONS': {
           'autocommit': True,
         },
-
     }
 }
 
