@@ -23,11 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^gyl_r@wpu2i92$5&pi)7s+juy43#g93habyb@$h^7!r%j#8w('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '198.46.225.184',
-    'localhost', 
+    'localhost',
     '127.0.0.1'
 ]
 
@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'radiotaxi.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    'mysql':{
+    'default':{
         'NAME': 'radiotaxi',
         'ENGINE': 'django.db.backends.mysql',
         'USER': 'root',

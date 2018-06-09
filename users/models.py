@@ -47,18 +47,20 @@ class Vehicle(models.Model):
 
 
 
+
+    year= models.IntegerField
+    model=models.CharField(max_length=25,null=True)
+    brand=models.CharField(max_length=25,null=True)
+    type_v=models.CharField(max_length=25,null=True)
+    plate= models.CharField(max_length=10,null=False,default="xx-xxxx")
+    #id=models.AutoField(primary_key=True,null=False,default="")
+
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     created_by =models.CharField(max_length=20)
-    year= models.IntegerField
-    model=models.CharField
-    brand=models.CharField
-    type_v=models.CharField
-
-
 
     def __str__(self):
-        return self.created_at
+        return self.plate
 
 
 class TripTracking(models.Model):
@@ -86,7 +88,7 @@ class Driver(models.Model):
 
 
     def __str__(self):
-        return title
+        return self.first_name
 
 #class Billing(models.Model):
 
@@ -124,7 +126,8 @@ class Aggrement(models.Model):
 class Transport(models.Model):
 
 
-    vehicle =models.ForeignKey(Vehicle,on_delete=models.PROTECT)
+#    vehicle =models.ForeignKey(Vehicle,on_delete=models.PROTECT)
+
     driver= models.ForeignKey(Driver,on_delete = models.PROTECT)
 
 
@@ -137,7 +140,7 @@ class Transport(models.Model):
 
 
     def __str__(self):
-        return self.start_service_dt
+        return self.created_by
 
 
 class Trip(models.Model):
