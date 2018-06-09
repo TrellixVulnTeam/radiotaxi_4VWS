@@ -15,6 +15,7 @@ class User(models.Model):
 
     name= models.CharField(max_length = 150)
     url = models.URLField()
+
     description = models.TextField(blank=True,null=True,default="")
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
@@ -23,22 +24,15 @@ class User(models.Model):
     def __str__(self):
         return self.title
 
-class Trip(models.Model):
 
-#    id=models.Aggregate
-#    passanger==models.CharField
+class Passenger(models.Model):
 
 
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
-    created_by =models.CharField(max_length=20)
-
-
-    def __str__(self):
-        return title
-
-class Employee(models.Model):
+    national_id= models.CharField
+    first_name=models.CharField
+    last_name=models.CharField
+    date_birth=models.DateField
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
@@ -46,14 +40,45 @@ class Employee(models.Model):
 
 
     def __str__(self):
-        return title
+        return self.title
 
+
+class Vehicle(models.Model):
+
+
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+    created_by =models.CharField(max_length=20)
+    year= models.IntegerField
+    model=models.CharField
+    brand=models.CharField
+    type_v=models.CharField
+
+
+
+    def __str__(self):
+        return self.title
+
+
+class TripTracking(models.Model):
+
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+    created_by =models.CharField(max_length=20)
+
+    def __str__(self):
+            return self.title
 
 class Driver(models.Model):
 
     first_name=models.CharField(max_length=100)
     last_name=models.CharField(max_length=100)
     national_id=models.CharField(max_length=20)
+
+    licence_type=models.CharField(max_length=20)
+    date_birth = models.DateField()
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
@@ -89,11 +114,138 @@ class Customers(models.Model):
         return self.title
 
 
+
 class Aggrement(models.Model):
 
     customer=models.ForeignKey(Customers,on_delete=models.CASCADE)
     def __str__(self):
         return self.title
+#este es el objeto que configura el Movil que se encuentra configurado con Vehiculo y Conductor
+class Transport(models.Model):
+
+
+    vehicle =models.ForeignKey(Vehicle,on_delete=models.PROTECT)
+    driver= models.ForeignKey(Driver,on_delete = models.PROTECT)
+
+
+    start_service_dt = models.DateTimeField
+    end_service_dt = models.DateTimeField
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+    created_by =models.CharField(max_length=20)
+
+
+    def __str__(self):
+        return title
+
+
+class Trip(models.Model):
+
+#    id=models.Aggregate
+#    passanger==models.CharField
+    id_transport=models.IntegerField
+    #passenger = models.ForeignKey(Passenger,on_delete=models.PROTECT)
+    transport= models.ForeignKey(Transport,on_delete = models.PROTECT)
+    customer= models.ForeignKey(Customers,on_delete = models.PROTECT)
+    aggrement = models.ForeignKey(Aggrement, on_delete = models.PROTECT)
+
+    area = models.CharField(max_length=30)
+
+    pickup_address = models.CharField(max_length=150)
+    destionation_address = models.CharField(max_length=150)
+
+    phone=models.CharField(max_length=20)
+    mobile_phone=models.CharField(max_length=20)
+    payment_term = models.CharField(max_length=20)
+    comments= models.CharField(max_length=100)
+
+    start_trip_dt = models.DateTimeField
+    end_trip_dt = models.DateTimeField
+
+    ticket_number = models.IntegerField
+
+    amount = models.IntegerField
+
+    reported_pass = models.BooleanField()
+    current_status=models.CharField(max_length=20)
+    cost_center=models.CharField(max_length=10)
+
+    modified_pass=models.BooleanField
+    modified_pass_dt=models.DateTimeField
+
+    engange_dt = models.DateTimeField
+
+    cancellation_type= models.CharField
+    cancellation_comments = models.CharField
+
+    tag_quantity=models.IntegerField
+    tag_amount=models.IntegerField
+
+    operator = models.CharField
+
+
+    #Bank aggrement
+
+    metres_trip = models.IntegerField
+    wait_time = models.TimeField
+
+    others = models.CharField
+
+    park_amount = models.IntegerField
+
+    toll_amount = models.IntegerField
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+    created_by =models.CharField(max_length=20)
+
+
+    def __str__(self):
+        return title
+
+
+class ExtraServices(models.Model):
+
+
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+    created_by =models.CharField(max_length=20)
+
+
+    def __str__(self):
+        return title
+
+
+class Employee(models.Model):
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+    created_by =models.CharField(max_length=20)
+
+
+    def __str__(self):
+        return title
+
+
+
+
 
 
 class Branches(models.Model):
